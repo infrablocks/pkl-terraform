@@ -52,7 +52,7 @@ jobs:
               uses: softprops/action-gh-release@v2
               if: github.event_name == 'push' && github.event.ref == 'refs/heads/main'
               with:
-                tag_name: ${{ steps.project_version.outputs.project_version }}
+                tag_name: ${{ env.project_version }}
                 files: .out/terraform@${{env.project_version_without_v}}/*
 
             - name: Push tag

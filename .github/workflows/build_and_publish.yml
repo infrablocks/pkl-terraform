@@ -39,13 +39,13 @@ jobs:
             
             - name: Substitute version
               run: |
-                sed -i "s/0.0.0/${{ steps.project_version.outputs.project_version_without_v }}/g" PklProject
+                sed -i "s/0.0.0/${{ env.project_version_without_v }}/g" PklProject
 
             - name: Build Pkl package
               run: pkl project package
 
             - name: Apply tag
-              run : git tag ${{ steps.project_version.outputs.project_version }}
+              run : git tag ${{ env.project_version }}
               if: github.event.name == 'push' && github.event.ref == 'refs/heads/master'
 
             - name: Release
@@ -57,4 +57,4 @@ jobs:
 
             - name: Push tag
               if: github.event_name == 'push' && github.event.ref == 'refs/heads/master'
-              run: git push origin ${{ steps.project_version.outputs.project_version }}
+              run: git push origin ${{ env.project_version }}

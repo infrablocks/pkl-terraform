@@ -1,6 +1,6 @@
 import "Backends.pkl"
 
-class TfVarsRenders extends ValueRenderer {
+class TfVarsRenderer extends ValueRenderer {
     function renderDocument(value: Any): String = renderValue(value)
     function renderValue(value: Any): String =
         if (value is String)

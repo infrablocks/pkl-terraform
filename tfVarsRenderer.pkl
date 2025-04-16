@@ -10,7 +10,7 @@ class TfVarsRenderer extends ValueRenderer {
         else if (value is Dynamic)
             renderDynamic(value)
         else if (value is Object)
-            renderDynamic((values as Object).toDynamic())
+            renderDynamic((value as Object).toDynamic())
         else
             "ERROR - don't know how to render: " + value
     function renderDynamic(object: Dynamic): String =

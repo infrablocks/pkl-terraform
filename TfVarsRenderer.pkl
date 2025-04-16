@@ -1,0 +1,18 @@
+import "Backends.pkl"
+
+class TfVarsRenders extends ValueRenderer {
+    function renderDocument(value: Any): String = renderValue(value)
+    function renderValue(value: Any): String =
+        if (value is String)
+            "\"" + value + "\""
+        else if (value is Boolean)
+            if (value) "true" else "false"
+        else if (value is Dynamic)
+            renderDynamic(value)
+        else if (value is Object)
+            renderDynamic((values as Object).toDynamic())
+        else
+            "ERROR - don't know how to render: " + value
+    function renderDynamic(object: Dynamic): String =
+        object.toMap().entries.map((el) -> el.key + " = " + renderValue(el.value)).join("\n")
+}

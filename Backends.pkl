@@ -1,0 +1,10 @@
+class S3BackendConfig {
+    bucket: String
+    region: String
+    key: String
+    use_lockfile: Boolean = true
+}
+
+class LocalBackendConfig {
+    path: String
+}

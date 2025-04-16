@@ -36,7 +36,7 @@ jobs:
               run: |
                 echo "project_version=${{ steps.get_semver.outputs.next_version }}" >> $GITHUB_ENV
                 echo "project_version_without_v=$(echo ${{ steps.get_semver.outputs.next_version }} |  tr -d 'v')" >> $GITHUB_ENV
-                echo "pkl_version_tag=terraform@${{ steps.get_semver.outputs.next_version }}" >> $GITHUB_ENV
+                echo "pkl_version_tag=terraform@$(echo ${{ steps.get_semver.outputs.next_version }} |  tr -d 'v')" >> $GITHUB_ENV
             
             - name: Substitute version
               run: |

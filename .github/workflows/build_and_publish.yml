@@ -36,6 +36,7 @@ jobs:
               run: |
                 echo "project_version=${{ steps.get_semver.outputs.next_version }}" >> $GITHUB_ENV
                 echo "project_version_without_v=$(echo ${{ steps.get_semver.outputs.next_version }} |  tr -d 'v')" >> $GITHUB_ENV
+                echo "pkl_version_tag=terraform@${{ steps.get_semver.outputs.next_version }}" >> $GITHUB_ENV
             
             - name: Substitute version
               run: |
@@ -48,13 +49,17 @@ jobs:
               run : git tag ${{ env.project_version }}
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
+            - name: Apply Pkl tag
+              run : git tag ${{ env.pkl_version_tag }}
+              if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
             - name: Release
               uses: softprops/action-gh-release@v2
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
               with:
-                tag_name: ${{ env.project_version }}
+                tag_name: ${{ env.pkl_version_tag}}
                 files: .out/terraform@${{env.project_version_without_v}}/*
 
-            - name: Push tag
+            - name: Push tags
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
               run: git push origin ${{ env.project_version }}

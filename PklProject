@@ -4,5 +4,5 @@ package {
   name = "terraform"
   baseUri = "package://pkg.pkl-lang.org/github.com/infrablocks/pkl-\(name)/\(name)"
   version = "0.0.0"
-  packageZipUrl = "https://github.com/infrablocks/pkl-\(name)/releases/download/v\(version)/\(name)@\(version).zip"
+  packageZipUrl = "https://github.com/infrablocks/pkl-\(name)/releases/download/\(name)@\(version)/\(name)@\(version).zip"
 }

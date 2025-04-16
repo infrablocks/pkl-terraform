@@ -1,4 +1,4 @@
-import "Backends.pkl"
+import "backends.pkl"
 
 class TfVarsRenderer extends ValueRenderer {
     function renderDocument(value: Any): String = renderValue(value)

@@ -5,6 +5,12 @@ class TfVarsRenderer extends ValueRenderer {
     function renderValue(value: Any): String =
         if (value is String)
             "\"" + value + "\""
+        else if (value is Int || value is Float)
+            value.toString()
+        else if (value is List)
+            "[" + value.map((el) -> renderValue(el)).join(", ") + "]"
+        else if (value is Map)
+            "{" + value.entries.map((el) -> el.key + " = " + renderValue(el.value)).join(", ") + "}"
         else if (value is Boolean)
             if (value) "true" else "false"
         else if (value is Dynamic)

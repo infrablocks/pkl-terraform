@@ -1,0 +1,10 @@
+amends "pkl:test"
+import* "examples/*.pkl" as allExamples
+
+examples {
+  for (key in allExamples.keys) {
+    [key.drop("examples/".length).replaceLast("pkl","tfvars")] {
+        allExamples[key].output.text
+    }
+  }
+}

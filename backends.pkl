@@ -8,3 +8,5 @@ class S3BackendConfig {
 class LocalBackendConfig {
     path: String
 }
+
+typealias BackendConfig = S3BackendConfig | LocalBackendConfig

@@ -1,0 +1,11 @@
+import "../tfVarsRenderer.pkl"
+
+one = 1
+two = "two"
+three = true
+
+output {
+    renderer = new tfVarsRenderer.TfVarsRenderer{
+        pretty = true
+    }
+}

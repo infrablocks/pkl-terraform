@@ -1,6 +1,7 @@
 import "backends.pkl"
 
 class TfVarsRenderer extends ValueRenderer {
+    pretty: Boolean = false
     function renderDocument(value: Any): String = renderValue(value)
     function renderValue(value: Any): String =
         if (value is String)
@@ -20,5 +21,6 @@ class TfVarsRenderer extends ValueRenderer {
         else
             "ERROR - don't know how to render: " + value
     function renderDynamic(object: Dynamic): String =
-        object.toMap().entries.map((el) -> el.key + " = " + renderValue(el.value)).join("\n")
+        let (maxKeyLength = object.toMap().keys.map((el) -> el.length).max)
+        object.toMap().entries.map((el) -> el.key + "\(" ".repeat(if (pretty) maxKeyLength - el.key.length else 0)) = " + renderValue(el.value)).join("\n")
 }

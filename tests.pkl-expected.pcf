@@ -6,4 +6,11 @@ examples {
     three = true
     """
   }
+  ["pretty.tfvars"] {
+    """
+    one   = 1
+    two   = "two"
+    three = true
+    """
+  }
 }

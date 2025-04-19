@@ -4,6 +4,7 @@ examples {
     one = 1
     two = "two"
     three = true
+    four = [1, 2, 3]
     """
   }
   ["pretty.tfvars"] {
@@ -11,6 +12,7 @@ examples {
     one   = 1
     two   = "two"
     three = true
+    four  = [1, 2, 3]
     """
   }
 }

@@ -1,5 +1,3 @@
-import "backends.pkl"
-
 class TfVarsRenderer extends ValueRenderer {
     pretty: Boolean = false
     function renderDocument(value: Any): String = renderValue(value)
@@ -8,10 +6,8 @@ class TfVarsRenderer extends ValueRenderer {
             "\"" + value + "\""
         else if (value is Int || value is Float)
             value.toString()
-        else if (value is List)
-            "[" + value.map((el) -> renderValue(el)).join(", ") + "]"
-        else if (value is Map)
-            "{" + value.entries.map((el) -> el.key + " = " + renderValue(el.value)).join(", ") + "}"
+        else if (value is Listing)
+            "[" + value.toList().map((el) -> renderValue(el)).join(", ") + "]"
         else if (value is Boolean)
             if (value) "true" else "false"
         else if (value is Dynamic)

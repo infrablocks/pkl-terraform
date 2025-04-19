@@ -3,6 +3,11 @@ import "../tfVarsRenderer.pkl"
 one = 1
 two = "two"
 three = true
+four = new Listing {
+    1
+    2
+    3
+}
 
 output {
     renderer = new tfVarsRenderer.TfVarsRenderer{

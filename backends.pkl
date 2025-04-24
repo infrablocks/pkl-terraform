@@ -3,6 +3,7 @@ class S3BackendConfig {
     region: String
     key: String
     use_lockfile: Boolean = true
+    profile: String?
 }
 
 class LocalBackendConfig {
